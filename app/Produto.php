@@ -41,6 +41,11 @@ class ProdutoResourceGET implements ProdutoResource{
         echo $ndao->buscar($filtro);
     }
     
+    public function meus($id){
+        $ndao = new ProdutoDAO();
+        echo $ndao->meus($id);
+    }
+    
     public function todos(){
         //header("Access-Control-Allow-Origin: *");
         $ndao = new ProdutoDAO();
