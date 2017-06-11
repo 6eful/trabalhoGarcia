@@ -244,6 +244,20 @@ function removerProduto(){
     xhr.send();
     document.forms.deletar.deletar.value = "";
 }
+function apagarConta(){
+    const xhr = new XMLHttpRequest();
+    var varEmail = document.forms.conta.removeConta.value;
+    var data = {email:varEmail};
+    alert(data['email']);
+    xhr.open("DELETE","https://php-a6eful.c9users.io/usuario/manipular/1");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            
+        }
+    }
+    xhr.send(JSON.stringify(data));
+    document.forms.conta.removeConta.value = "";
+}
 function main(){
     document.getElementById("enviar").addEventListener("click",function(){
         cadastrarUsuario();

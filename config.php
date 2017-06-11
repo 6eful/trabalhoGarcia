@@ -67,7 +67,11 @@
         		<section class="uk-width-2-4@l uk-width-1-2@m uk-width-1@s">
         			<div class="container">
 	        			<article id="tab-1" class="tab-content current">
-						
+	        				<form name="conta">
+	        					<label for="removeConta">Digite seu Email para deletar sua Conta: </label>
+                        		<input class="emailUsuario" id="removeConta" type="email" name="removeConta">
+                        	</form>
+							<button onclick="apagarConta()">Deletar Conta</button>
 						</article>
 						<article id="tab-2" class="tab-content">
 							<button id="meus" onclick="meusProdutos(<?php 
