@@ -39,6 +39,18 @@
                 </aside>
                 <main class="uk-width-1@s uk-width-1@m uk-width-1-2@l back">
                     <h2>Entrar</h2>
+                    <form name="form">
+                        
+                        <label for="emailUsuario">Email</label>
+                        <input class="emailUsuario" id="emailUsuario" type="email" name="emailUsuario" placeholder="Digite seu Email" accesskey="1" required autocomplete="off">
+                        
+                        <label for="senhaUsuario">Senha</label>
+                        <input class="senhaUsuario" id="senhaUsuario" type="password" name="senhaUsuario" placeholder="Digite a senha" accesskey="3" required>
+                        
+                    </form>
+                    <button id="entrar">ENTRE</button>
+                    <p>Não possui conta? Então Faça cadastro</p>
+                    <a href="/cadastro"><button id="cad">REALIZAR CADASTRO</button></a>
                 </main>
             </div>
             <footer class="" uk-grid>
