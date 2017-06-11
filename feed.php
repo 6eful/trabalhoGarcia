@@ -48,7 +48,7 @@
                 <ul class="tabs">
             		<li class="tab-link" data-tab="tab-1" id="todos" onclick="mostrarTodos()">TODOS</li>
             		<li class="tab-link" data-tab="tab-2" id="Livro" onclick="mostrarLivro()">LIVROS</li>
-            		<li class="tab-link" data-tab="tab-3" id="Uniforme">UNIFORMES</li>
+            		<li class="tab-link" data-tab="tab-3" id="Uniforme" onclick="mostrarUniforme()">UNIFORMES</li>
             		<li class="tab-link" data-tab="tab-4" id="MaterialEscolar">MATERIAL ESCOLAR</li>
             	</ul>
             </nav>
