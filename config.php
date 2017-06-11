@@ -74,7 +74,27 @@
 						</article>
 						<article id="tab-3" class="tab-content">
 							<div class="uk-width-1@l">
-								
+								<form name="new">
+									<label for="nomeProduto">Nome do produto:</label>
+									<input type="text" id="nomeProduto" name="nomeProduto" value="">
+									
+									<label for="categoriaProduto">Categoria: </label>
+									<select id="categoriaProduto" name="categoriaProduto">
+										<option value="livro">Livro</option>
+										<option value="uniforme">Uniforme</option>
+										<option value="materialEscolar">Material Escolar</option>
+									</select>
+									<fieldset>
+										<legend>Descrição</legend>
+										<label for ="descricaoProduto"></label>
+										Descrição do Produto:<br>
+										<textarea cols=35 id="descricaoProduto" rows="auto" name="descricaoProduto" maxlength="140" wrap="hard"></textarea>
+									</fieldset>
+									<label for="urlProdutoEditar">Imagem: </label>
+									<input type="file" id="urlProdutoEditar" name="urlProdutoEditar" accept="image/jpg,image/png,image/jpeg">
+								</form>
+								<button id="criar" click="">Salvar produto e anunciar</button>
+							</div>
 							<div class="uk-width-1@l">
 								
 							</div>
