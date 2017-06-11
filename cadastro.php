@@ -38,7 +38,29 @@
                 </aside>
                 <main class="uk-width-1@s uk-width-1@m uk-width-1-2@l back">
                     <h2>Registrar-se</h2>
-                    
+                    <form name="cadastro">
+                        
+                        <label for="nomeUsuario">Nome de Usuário</label>
+                        <input class="nomeUsuario" id="nomeUsuario" type="text" name="nomeUsuario" placeholder="Digite um nome de usuário" accesskey="0" required autocomplete="off">
+                        
+                        <label for="emailUsuario">Email</label>
+                        <input class="emailUsuario" id="emailUsuario" type="email" name="emailUsuario" placeholder="Digite seu Email" accesskey="1" required autocomplete="off">
+
+                        <label for="telefoneUsuario">Telefone</label>
+                        <input class="telefoneUsuario" id="telefoneUsuario" type="tel" name="telefoneUsuario" placeholder="Digite seu Telefone de Contato" accesskey="2" required autocomplete="off">
+                        
+                        <label for="senhaUsuario">Senha</label>
+                        <input class="senhaUsuario" id="senhaUsuario" type="password" name="senhaUsuario" placeholder="Digite a senha" accesskey="3" required>
+                        
+                        <label for="CsenhaUsuario">Repetir Senha</label>
+                        <input class="CsenhaUsuario" id="CsenhaUsuario" type="password" name="CsenhaUsuario" placeholder="Repetir a senha" accesskey="4" required>
+                        
+                        <p>Ao clicar em Cadastra-se, você concorda com nossos Termos e que leu nossa Política de Dados</p>
+                        
+                    </form>
+                     <button id="enviar">Finalizar cadastro</button>
+                    <p>Já tem conta? Faça login</p>
+                    <a href="/login"><button id="clogar">ENTRE</button></a>
                 </main>
             </div>
             <footer class="" uk-grid>
