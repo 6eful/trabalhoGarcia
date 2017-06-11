@@ -86,6 +86,12 @@
 								        
 								    </tbody>
 								</table>
+								<form name="deletar">
+									<label for="deletar">Codigo do Produto para Deletar:
+									</label>
+									<input type="text" name="deletar" id="deletar" class="deletar">
+								</form>
+								<button onclick="removerProduto()" style="margin-top:10px;margin-left:auto;margin-right:auto;">APAGAR</button>
 						</article>
 						<article id="tab-3" class="tab-content">
 							<div class="uk-width-1@l">

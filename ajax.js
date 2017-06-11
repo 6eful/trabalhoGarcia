@@ -17,7 +17,7 @@ function cadastrarUsuario() {
 
 function meusProdutos(id){
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://php-a6eful.c9users.io/produto/meus/"+id);
+    xhr.open("GET", "https://php-a6eful.c9users.io/produto/meus/2");
     xhr.responseType = "application/json";
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
@@ -229,6 +229,20 @@ function mostrarMaterialEscolar(){
         }
     }
     xhr.send();
+}
+function removerProduto(){
+    const xhr = new XMLHttpRequest();
+    var varId = document.forms.deletar.deletar.value;
+    var url = "https://php-a6eful.c9users.io/produto/manipular/"+varId;
+    alert(url);
+    xhr.open("DELETE",url);
+    // xhr.responseType = "application/json";
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+        }
+    }
+    xhr.send();
+    document.forms.deletar.deletar.value = "";
 }
 function main(){
     document.getElementById("enviar").addEventListener("click",function(){
