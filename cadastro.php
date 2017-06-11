@@ -38,7 +38,7 @@
                 </aside>
                 <main class="uk-width-1@s uk-width-1@m uk-width-1-2@l back">
                     <h2>Registrar-se</h2>
-                    <form name="cadastro">
+                    <form name="cadastro" onsubmit="return validacao()">
                         
                         <label for="nomeUsuario">Nome de Usuário</label>
                         <input class="nomeUsuario" id="nomeUsuario" type="text" name="nomeUsuario" placeholder="Digite um nome de usuário" accesskey="0" required autocomplete="off">
@@ -56,7 +56,6 @@
                         <input class="CsenhaUsuario" id="CsenhaUsuario" type="password" name="CsenhaUsuario" placeholder="Repetir a senha" accesskey="4" required>
                         
                         <p>Ao clicar em Cadastra-se, você concorda com nossos Termos e que leu nossa Política de Dados</p>
-                        
                     </form>
                      <button id="enviar">Finalizar cadastro</button>
                     <p>Já tem conta? Faça login</p>
