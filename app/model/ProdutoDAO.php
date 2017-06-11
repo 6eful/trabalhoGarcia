@@ -8,6 +8,12 @@ class ProdutoDAO{
         $this->conn = Connection::getConn("127.0.0.1", "a6eful", "", "DataBase", 3306);
     }
     
+    public function inserir($obj){
+        $stmt = $this->conn->prepare("INSERT INTO Produto(title,nm_categoria, ds_produto, dt_publicacao) VALUES(?,?,?,?)") or die("2".$conn->error);
+        $stmt->bind_param("sssd",$obj->nome,$obj->cat,$obj->descricao,date('Y-m-d h:i:s')) or die("3".$stmt->error);
+        $stmt->execute() or die("4".$stmt->error);
+    }
+    
     public function buscar($filtro){
             $st = $this->conn->prepare("SELECT p.title,p.url_imagem, DATE_FORMAT(dt_publicacao,  '%d/%m/%y') , u.nm_Usuario, p.ds_produto FROM Produto as p inner join Usuario as u on p.cd_usuario = u.Cd_Usuario and nm_categoria = ?") or die("1".$conn->error);
             $st->bind_param("s",$filtro) or die("2".$st->error);
