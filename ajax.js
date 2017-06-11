@@ -215,6 +215,21 @@ function mostrarUniforme(){
     }
     xhr.send();
 }
+function mostrarMaterialEscolar(){
+    var tbody = document.getElementById("tab-4");
+    tbody.innerHTML = "";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://php-a6eful.c9users.io/produto/manipular/materialescolar");
+    xhr.responseType = "application/json";
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
+            var resposta = xhr.responseText;
+            var obj = JSON.parse(resposta);
+            viewAll(obj,4);
+        }
+    }
+    xhr.send();
+}
 function main(){
     document.getElementById("enviar").addEventListener("click",function(){
         cadastrarUsuario();

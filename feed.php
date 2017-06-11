@@ -49,7 +49,7 @@
             		<li class="tab-link" data-tab="tab-1" id="todos" onclick="mostrarTodos()">TODOS</li>
             		<li class="tab-link" data-tab="tab-2" id="Livro" onclick="mostrarLivro()">LIVROS</li>
             		<li class="tab-link" data-tab="tab-3" id="Uniforme" onclick="mostrarUniforme()">UNIFORMES</li>
-            		<li class="tab-link" data-tab="tab-4" id="MaterialEscolar">MATERIAL ESCOLAR</li>
+            		<li class="tab-link" data-tab="tab-4" id="MaterialEscolar" onclick="mostrarMaterialEscolar()">MATERIAL ESCOLAR</li>
             	</ul>
             </nav>
             <main uk-grid class="uk-width-1@s uk-width-1@m uk-width-1@l view" style="margin-left: 0px;margin:0 auto;">
