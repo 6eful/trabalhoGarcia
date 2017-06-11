@@ -81,10 +81,10 @@ function logar(){
     xhr.send(JSON.stringify(data));
     //window.location.replace("https://php-a6eful.c9users.io/feed");
 }
-function viewAll(roxo){
+function viewAll(roxo,x){
     var verde = roxo["resp"];
     var i = 1;
-    var tbody = document.getElementById("tab-2");
+    var tbody = document.getElementById("tab-"+x);
     verde.forEach(function(vermelho){
         var article = document.createElement("article");
         var picture = document.createElement("picture");
@@ -171,7 +171,7 @@ function viewAll(roxo){
     });
 }
 function mostrarTodos(){
-    var tbody = document.getElementById("tab-2");
+    var tbody = document.getElementById("tab-1");
     tbody.innerHTML = "";
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "https://php-a6eful.c9users.io/produto/todos");
@@ -180,7 +180,22 @@ function mostrarTodos(){
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
             var resposta = xhr.responseText;
             var obj = JSON.parse(resposta);
-            viewAll(obj);
+            viewAll(obj,1);
+        }
+    }
+    xhr.send();
+}
+function mostrarLivro(){
+    var tbody = document.getElementById("tab-2");
+    tbody.innerHTML = "";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://php-a6eful.c9users.io/produto/manipular/livro");
+    xhr.responseType = "application/json";
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
+            var resposta = xhr.responseText;
+            var obj = JSON.parse(resposta);
+            viewAll(obj,2);
         }
     }
     xhr.send();
