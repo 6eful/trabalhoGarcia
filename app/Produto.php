@@ -37,9 +37,9 @@ class ProdutoResourcePOST implements ProdutoResource{
 
 class ProdutoResourceGET implements ProdutoResource{
     
-    public function manipular($id=3){
+    public function manipular($filtro){
         $ndao = new ProdutoDAO();
-        echo $ndao->getProduto($id);
+        echo $ndao->buscar($filtro);
     }
     
     public function todos(){
