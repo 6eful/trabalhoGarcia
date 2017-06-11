@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis|Slabo+27px');
+/*font-family: 'Dosis', sans-serif;*/
+/*font-family: 'Slabo 27px', serif;*/
+body{
+    background-color:#fafafa;
+    font-family:'Dosis','Slabo 27px',sans-serif;
+    color:#000;
+    min-height: 33.571em;
+}
+.back {background-color:#20BF55;}
+main {color:#fff;display:block;margin: 0 auto 0 auto;}
+main>h2 {
+    color:#fff;
+    text-align:center;
+    padding-bottom:0.571em;
+}
+body div.uk-text-center.uk-grid.uk-grid-stack+div.uk-grid.uk-grid-stack {
+    min-height:747px;
+}
+aside {
+    text-align: center;
+    font-family: 'Dosis','Slabo 27px', sans-serif;
+}
+form {
+    width:70%;
+    margin:0% auto 0% auto;
+    color:rgba(255,255,255,1);
+}
+main>p{text-align:center;}
+form p+input+p {text-align:center;}
+main>button#enviar, main>button#entrar{
+    background-color: #3b5999;
+    border:none;
+    color: #fff;
+    font-family: 'Dosis','Slabo 27px','Open Sans Condensed', sans-serif;
+    font-size: 18px;
+    padding: 14px 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:70%;
+}
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"]{   
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    color:#fff;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: #000;
+    background-color:#20BF55;
+    font: 16px 'Dosis','Slabo 27px',Arial, Helvetica, sans-serif;
+    height: 45px;
+    margin-bottom: 7px;
+}
+#clogar {color:#000; width: 70%;margin:0% 15%;padding: 14px 18px;border:none;font-family: 'Dosis','Slabo 27px','Open Sans Condensed', sans-serif;font-size: 18px;}
+#clogar:hover { background-color:hsla(359, 100%, 62%, 1);/*rgba(255, 62, 65, 1);#FF3E41;*/color:rgba(255,255,255,1);}
+a #clogar:hover { text-decoration: none;color:rgba(255,255,255,1); }
+
+#cad {color:#000; width: 70%;margin:0% 15%;padding: 14px 18px;border:none;font-family: 'Dosis','Slabo 27px','Open Sans Condensed', sans-serif;font-size: 18px;}
+#cad:hover { background-color:hsla(359, 100%, 62%, 1);/*rgba(255, 62, 65, 1);#FF3E41;*/color:rgba(255,255,255,1);}
+a #cad:hover { text-decoration: none;color:rgba(255,255,255,1); }
+
+::-webkit-input-placeholder {color: rgba(255, 255, 255, 0.5); }
+:-moz-placeholder { /* Firefox 18- */color: rgba(255, 255, 255, 0.5); }
+::-moz-placeholder {  /* Firefox 19+ */color: rgba(255, 255, 255, 0.5); }
+:-ms-input-placeholder { color: rgba(255, 255, 255, 0.5); }
+
+footer.uk-grid.uk-grid-stack{
+    border-top:1px solid #ccc;
+    color: rgba(0, 0, 0, 1);
+    margin-top:0px;
+}
+footer p {
+    color:rgba(0,0,0,1);
+    text-align:center;
+}
