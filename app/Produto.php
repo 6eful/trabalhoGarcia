@@ -58,6 +58,24 @@ class ProdutoResourceGET implements ProdutoResource{
     }
 }
 
+class ProdutoResourceDELETE implements ProdutoResource{
+    
+    public function manipular($id){
+        $ndao = new ProdutoDAO();
+        echo $ndao->remover($id);
+    }
+    
+    public function todos(){
+        echo "Error";
+        http_response_code(405);
+    }
+    
+    public function __call($m, $arg){
+        echo "$m nao achado para DELETE";
+        http_response_code(404);
+    }
+}
+
 class ProdutoResourceOPTIONS implements ProdutoResource{
     
     public function __call($m, $arg){

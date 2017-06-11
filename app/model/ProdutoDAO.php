@@ -32,6 +32,12 @@ class ProdutoDAO{
             echo json_encode($arrMaior);
     }
     
+    public function remover($id){
+        $st = $this->conn->prepare("DELETE FROM Produto WHERE cd_Produto = ?");
+        $st->bind_param("i",$id) or die("3".$st->error);
+        $st->execute() or die("4".$st->error);
+    }
+    
     public function buscar($filtro){
             $st = $this->conn->prepare("SELECT p.title,p.url_imagem, DATE_FORMAT(dt_publicacao,  '%d/%m/%y') , u.nm_Usuario, p.ds_produto FROM Produto as p inner join Usuario as u on p.cd_usuario = u.Cd_Usuario and nm_categoria = ?") or die("1".$conn->error);
             $st->bind_param("s",$filtro) or die("2".$st->error);
