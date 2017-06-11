@@ -16,6 +16,13 @@ class UsuarioDAO{
         $stmt->bind_param("sssi",$obj->nome,$obj->email,$hash,$obj->telefone) or die("3".$stmt->error);
         $stmt->execute() or die("4".$stmt->error);
     }
+    
+    public function remover($obj){
+        var_dump($obj);
+        $st = $this->conn->prepare("DELETE FROM Usuario WHERE ds_Email = ?") or die("1".$conn->error);
+        $st->bind_param("s",$obj->email) or die("2".$st->error);
+        $st->execute() or die("3".$st->error);
+    }
 }
 
 ?>

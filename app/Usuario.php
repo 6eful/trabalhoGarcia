@@ -28,11 +28,35 @@ class UsuarioResourcePOST implements UsuarioResource{
     }
 }
 
+class UsuarioResourceDELETE implements UsuarioResource{
+    
+    public function manipular($id=0){
+        header("Access-Control-Allow-Origin: *");
+        $accept = $_SERVER["CONTENT_TYPE"];
+        echo $accept;
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $ndao = new UsuarioDAO();
+        echo $ndao->remover($obj);
+        echo "OK";
+    }
+    
+    public function todos(){
+        echo "Error";
+        http_response_code(405);
+    }
+    
+    public function __call($m, $arg){
+        echo "$m nao achado para DELETE";
+        http_response_code(404);
+    }
+}
+
 class UsuarioResourceGET implements UsuarioResource{
     
-    public function manipular($id=1){
+    public function manipular($id=0){
         $ndao = new UsuarioDAO();
-        echo $ndao->getNome($id);
+        echo $ndao->getNome($obj);
     }
     
     public function todos(){
