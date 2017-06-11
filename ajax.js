@@ -15,9 +15,9 @@ function cadastrarUsuario() {
     xhr.send(JSON.stringify(data));
 }
 
-function meusProdutos(){
+function meusProdutos(id){
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://php-a6eful.c9users.io/produto/manipular/2");
+    xhr.open("GET", "https://php-a6eful.c9users.io/produto/meus/"+id);
     xhr.responseType = "application/json";
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
@@ -234,14 +234,8 @@ function main(){
     document.getElementById("enviar").addEventListener("click",function(){
         cadastrarUsuario();
     });
-    document.getElementById("criar").addEventListener("click", function(){
-        CriarProduto();
-    });
     document.getElementById("entrar").addEventListener("click", function(){
         logar();
-    });
-    document.getElementById("meus").addEventListener("click", function(){
-        meusProdutos();
     });
     document.getElementById("logout").addEventListener("click", function(){
         sair();

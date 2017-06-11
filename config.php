@@ -70,7 +70,22 @@
 						
 						</article>
 						<article id="tab-2" class="tab-content">
-								
+							<button id="meus" onclick="meusProdutos(<?php 
+							if (!isset($_SESSION)) session_start();
+                		echo $_SESSION['UsuarioID'];?>)">Visualizar meus Produtos</button>
+								<table class="uk-table uk-table-responsive uk-table-divider">
+								    <thead>
+								        <tr>
+								            <th>Codigo</th>
+								            <th>Nome</th>
+								            <th>Categoria</th>
+								            <th>Descrição</th>
+								        </tr>
+								    </thead>
+								    <tbody id="body">
+								        
+								    </tbody>
+								</table>
 						</article>
 						<article id="tab-3" class="tab-content">
 							<div class="uk-width-1@l">
