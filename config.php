@@ -93,7 +93,7 @@
 									<label for="urlProdutoEditar">Imagem: </label>
 									<input type="file" id="urlProdutoEditar" name="urlProdutoEditar" accept="image/jpg,image/png,image/jpeg">
 								</form>
-								<button id="criar" click="">Salvar produto e anunciar</button>
+								<button id="criar" onclick="CriarProduto()">Salvar produto e anunciar</button>
 							</div>
 							<div class="uk-width-1@l">
 								

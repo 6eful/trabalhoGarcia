@@ -54,7 +54,7 @@ function CriarProduto(){
     var varNome = document.forms.new.nomeProduto.value;
     var varCat = document.forms.new.categoriaProduto.value;
     var varDes = document.forms.new.descricaoProduto.value;
-    var data = {nome:varNome};
+    var data = {nome:varNome,cat:varCat,descricao:varDes};
     const xhr = new XMLHttpRequest();
     xhr.open("POST","https://php-a6eful.c9users.io/produto/manipular")
     xhr.onreadystatechange = function(){
