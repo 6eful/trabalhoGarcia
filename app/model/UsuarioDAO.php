@@ -43,6 +43,10 @@ class UsuarioDAO{
             // $_SESSION['qt'] = $qt_registro;
         }
     }
+    public function sair(){
+        session_start();
+        session_destroy();
+    }
     
     public function remover($obj){
         $st = $this->conn->prepare("DELETE FROM Usuario WHERE ds_Email = ?") or die("1".$conn->error);
