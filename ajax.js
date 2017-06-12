@@ -72,7 +72,7 @@ function logar(){
     var vsenha = document.forms.form.senhaUsuario.value;
     var data = {nome:vnome,senha:vsenha};
     const xhr = new XMLHttpRequest();
-    xhr.open("POST","https://php-a6eful.c9users.io/usuario/autenticar")
+    xhr.open("POST","https://php-a6eful.c9users.io/usuario/autenticar");
     xhr.onreadystatechange = function(){
         if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
             
@@ -261,9 +261,6 @@ function apagarConta(){
 function main(){
     document.getElementById("enviar").addEventListener("click",function(){
         cadastrarUsuario();
-    });
-    document.getElementById("entrar").addEventListener("click", function(){
-        logar();
     });
     document.getElementById("logout").addEventListener("click", function(){
         sair();

@@ -14,7 +14,10 @@
             <script type="text/javascript" src="trabalhoGarcia/ajax.js"></script>
         </head>
         <body>
-
+            <?php if (!isset($_SESSION)) session_start();
+                if (isset($_SESSION['Logado'])) {
+                    header("Location:/feed"); exit;
+                }?>
             <div class="uk-text-center" uk-grid>
                 <header class="uk-width-1@s uk-width-1@m uk-width-1-2@l">
                     <picture>
@@ -48,7 +51,7 @@
                         <input class="senhaUsuario" id="senhaUsuario" type="password" name="senhaUsuario" placeholder="Digite a senha" accesskey="3" required>
                         
                     </form>
-                    <button id="entrar">ENTRE</button>
+                    <button id="entrar" onclick="logar()">ENTRE</button>
                     <p>Não possui conta? Então Faça cadastro</p>
                     <a href="/cadastro"><button id="cad">REALIZAR CADASTRO</button></a>
                 </main>
