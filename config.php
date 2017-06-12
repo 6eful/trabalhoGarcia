@@ -18,10 +18,11 @@
 				ul.tabs li.current{ color: #222; border-bottom: 1px solid red; }
 				.tab-content{ display: none;padding:5px; }
 				.tab-content.current{ display: inherit;}
-				footer {bottom:0; position:absolute;} 
 				form label{ text-align:left; display:block;}
 				input {box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;outline: none;border: none;border-bottom: 1px solid #ddd;padding-bottom:10px;width:100%;}
 				button {background-color: #3b5999;border:none;color: #fff;font-family: 'Dosis','Slabo 27px','Open Sans Condensed', sans-serif;font-size: 18px;padding: 14px 18px;text-decoration: none;text-transform: uppercase;display: block;}
+				footer{ border-top:1px solid #ccc; color: rgba(0, 0, 0, 1); margin-top:0px;}
+				footer p {color:rgba(0,0,0,1);text-align:center;}
 				@media screen and (max-width: 768px) {
 				  ul.tabs{ width:100%; }
 				  ul.tabs li{ text-align:center;}
@@ -124,7 +125,9 @@
 									<label for="urlProdutoEditar">Imagem: </label>
 									<input type="file" id="urlProdutoEditar" name="urlProdutoEditar" accept="image/jpg,image/png,image/jpeg">
 								</form>
-								<button id="criar" onclick="CriarProduto()">Salvar produto e anunciar</button>
+								<button id="criar" onclick="CriarProduto(<?php 
+							if (!isset($_SESSION)) session_start();
+                		echo $_SESSION['UsuarioID'];?>)">Salvar produto e anunciar</button>
 							</div>
 							<div class="uk-width-1@l">
 								

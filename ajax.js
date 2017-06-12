@@ -5,7 +5,7 @@ function cadastrarUsuario() {
     var varTelefone = document.forms.cadastro.senhaUsuario.value;
     var data = {nome:varNome,email:varEmail,senha:varSenha,telefone:varTelefone};
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://php-a6eful.c9users.io/usuario/manipular");
+    xhr.open("POST", "https://php-a6eful.c9users.io/usuario/manipular/");
     //xhr.setRequestHeader("content-type","application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
@@ -13,6 +13,10 @@ function cadastrarUsuario() {
         }
     }
     xhr.send(JSON.stringify(data));
+    document.forms.cadastro.nomeUsuario.value = "";
+    document.forms.cadastro.emailUsuario.value = "";
+    document.forms.cadastro.telefoneUsuario.value = "";
+    document.forms.cadastro.senhaUsuario.value = "";
 }
 
 function meusProdutos(id){
@@ -32,6 +36,7 @@ function meusProdutos(id){
 function montarPagina(roxo){
     var verde = roxo["resp"];
     var tbody = document.getElementById("body");
+    tbody.innerHTML = "";
     verde.forEach(function(vermelho){
         var tr = document.createElement("tr");
         var tdId = document.createElement("td");
@@ -50,13 +55,13 @@ function montarPagina(roxo){
     });
 }
 
-function CriarProduto(){
+function CriarProduto(id){
     var varNome = document.forms.new.nomeProduto.value;
     var varCat = document.forms.new.categoriaProduto.value;
     var varDes = document.forms.new.descricaoProduto.value;
     var data = {nome:varNome,cat:varCat,descricao:varDes};
     const xhr = new XMLHttpRequest();
-    xhr.open("POST","https://php-a6eful.c9users.io/produto/manipular")
+    xhr.open("POST","https://php-a6eful.c9users.io/produto/manipular/"+id)
     xhr.onreadystatechange = function(){
         if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
             
@@ -79,7 +84,7 @@ function logar(){
         }
     }
     xhr.send(JSON.stringify(data));
-    //window.location.replace("https://php-a6eful.c9users.io/feed");
+    window.location.replace("https://php-a6eful.c9users.io/config");
 }
 function sair(){
     const xhr = new XMLHttpRequest();
@@ -90,28 +95,35 @@ function sair(){
         }
     }
     xhr.send();
+    window.location.reload();
+    // window.location.replace("https://php-a6eful.c9users.io/feed");
 }
-function viewAll(roxo,x){
+function viewAll(roxo,x,y){
     var verde = roxo["resp"];
     var i = 1;
     var tbody = document.getElementById("tab-"+x);
     verde.forEach(function(vermelho){
         var article = document.createElement("article");
+        article.setAttribute("style","margin-right:10px");
         var picture = document.createElement("picture");
         var div1 = document.createElement("div");
         div1.className = "uk-inline-clip uk-transition-toggle uk-light";
         var a1 = document.createElement("a");
-        a1.setAttribute("href","#t"+i);
+        a1.setAttribute("href","#"+y+i);
         a1.setAttribute("uk-toggle","");
         var img1 = document.createElement("img");
         img1.setAttribute("src","trabalhoGarcia/img/produtos/"+vermelho['url']+".png");
         img1.setAttribute("alt",vermelho['categoria']);
+        img1.setAttribute("width","262px");
+        img1.setAttribute("heigth","180px");
+        img1.setAttribute("style","float:left");
         a1.appendChild(img1);
         var div2 = document.createElement("div");
         div2.className = "uk-position-center";
         var span1 = document.createElement("span");
         span1.className = "uk-transition-fade";
         span1.setAttribute("uk-icon","icon: plus; ratio: 2");
+        span1.setAttribute("style","color:black");
         div2.appendChild(span1);
         div1.appendChild(div2);
         div1.appendChild(a1);
@@ -120,7 +132,7 @@ function viewAll(roxo,x){
         
         //MODAL
         var div3 = document.createElement("div");
-        div3.setAttribute("id","t"+i);
+        div3.setAttribute("id",y+i);
         div3.setAttribute("uk-modal","center: true");
         var div4 = document.createElement("div");
         div4.className="uk-modal-dialog";
@@ -160,11 +172,14 @@ function viewAll(roxo,x){
         p2.innerHTML = vermelho["descricao"];
         var h4_4 = document.createElement("h4");
         h4_4.innerHTML = "Estado do Produto: Conservado";
+        var h4_5 = document.createElement("h4");
+        h4_5.innerHTML = "Telefone de Contato: " + vermelho['contato'];
         p1.appendChild(h4_1);
         p1.appendChild(h4_2);
         p1.appendChild(h4_3);
         p1.appendChild(p2);
         p1.appendChild(h4_4);
+        p1.appendChild(h4_5);
         div4.appendChild(p1);
         var nav = document.createElement("nav");
         nav.className = "uk-modal-footer uk-text-right";
@@ -190,7 +205,7 @@ function mostrarTodos(){
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
             var resposta = xhr.responseText;
             var obj = JSON.parse(resposta);
-            viewAll(obj,1);
+            viewAll(obj,1,"t");
         }
     }
     xhr.send();
@@ -205,7 +220,7 @@ function mostrarLivro(){
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
             var resposta = xhr.responseText;
             var obj = JSON.parse(resposta);
-            viewAll(obj,2);
+            viewAll(obj,2,"l");
         }
     }
     xhr.send();
@@ -220,7 +235,7 @@ function mostrarUniforme(){
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
             var resposta = xhr.responseText;
             var obj = JSON.parse(resposta);
-            viewAll(obj,3);
+            viewAll(obj,3,"u");
         }
     }
     xhr.send();
@@ -235,7 +250,7 @@ function mostrarMaterialEscolar(){
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
             var resposta = xhr.responseText;
             var obj = JSON.parse(resposta);
-            viewAll(obj,4);
+            viewAll(obj,4,"m");
         }
     }
     xhr.send();
@@ -271,9 +286,6 @@ function apagarConta(){
 function main(){
     document.getElementById("enviar").addEventListener("click",function(){
         cadastrarUsuario();
-    });
-    document.getElementById("logout").addEventListener("click", function(){
-        sair();
     });
 }
 

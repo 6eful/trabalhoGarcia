@@ -16,7 +16,7 @@
         <body>
             <?php if (!isset($_SESSION)) session_start();
                 if (isset($_SESSION['Logado'])) {
-                    header("Location:/feed"); exit;
+                   header("Location:/feed"); exit;
                 }?>
             <div class="uk-text-center" uk-grid>
                 <header class="uk-width-1@s uk-width-1@m uk-width-1-2@l">

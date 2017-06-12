@@ -8,9 +8,10 @@ class ProdutoDAO{
         $this->conn = Connection::getConn("127.0.0.1", "a6eful", "", "DataBase", 3306);
     }
     
-    public function inserir($obj){
-        $stmt = $this->conn->prepare("INSERT INTO Produto(title,nm_categoria, ds_produto, dt_publicacao) VALUES(?,?,?,?)") or die("2".$conn->error);
-        $stmt->bind_param("sssd",$obj->nome,$obj->cat,$obj->descricao,date('Y-m-d h:i:s')) or die("3".$stmt->error);
+    public function inserir($id,$obj){
+        echo $id;
+        $stmt = $this->conn->prepare("INSERT INTO Produto(title,nm_categoria, ds_produto, dt_publicacao, cd_usuario) VALUES(?,?,?,?,?)") or die("2".$conn->error);
+        $stmt->bind_param("sssdi",$obj->nome,$obj->cat,$obj->descricao,date('Y-m-d h:i:s'),$id) or die("3".$stmt->error);
         $stmt->execute() or die("4".$stmt->error);
     }
     public function meus($id){
@@ -58,9 +59,9 @@ class ProdutoDAO{
             echo json_encode($arrMaior);
     }
     public function listar(){
-            $st = $this->conn->prepare("SELECT p.title,p.url_imagem, DATE_FORMAT(dt_publicacao,  '%d/%m/%y') , u.nm_Usuario, p.ds_produto FROM Produto as p inner join Usuario as u on p.cd_usuario = u.Cd_Usuario ") or die("1".$conn->error);
+            $st = $this->conn->prepare("SELECT p.title,p.url_imagem, DATE_FORMAT(dt_publicacao,  '%d/%m/%y') , u.nm_Usuario, p.ds_produto, u.cd_Telefone FROM Produto as p inner join Usuario as u on p.cd_usuario = u.Cd_Usuario ") or die("1".$conn->error);
             $st->execute() or die("2".$st->error);
-            $st->bind_result($col0,$col1,$col2,$col4,$col5);
+            $st->bind_result($col0,$col1,$col2,$col4,$col5,$col6);
             $arrMaior = array();
             $arrMeio = array();
             $novo;
@@ -70,7 +71,8 @@ class ProdutoDAO{
                                     "url"       =>  $col1,
                                     "data"      =>  $col2,
                                     "por"       =>  $col4,
-                                    "descricao" =>  $col5);
+                                    "descricao" =>  $col5,
+                                    "contato"   =>  $col6);
             }
             $arrMaior["resp"] = $arrMeio;
             echo json_encode($arrMaior);

@@ -15,7 +15,7 @@ class ProdutoResourcePOST implements ProdutoResource{
             $json = file_get_contents('php://input');
             $obj = json_decode($json);
             $ndao = new ProdutoDAO();
-            $ndao->inserir($obj);
+            $ndao->inserir($id,$obj);
         // }else{
         //     echo "Headers inválidos";
         //     http_response_code(400);

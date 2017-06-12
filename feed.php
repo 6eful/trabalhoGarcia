@@ -7,7 +7,7 @@
             <link rel="stylesheet" href="trabalhoGarcia/normalize/normalize.css">
             <link rel="stylesheet" href="trabalhoGarcia/css/uikit.min.css">
             <link rel="stylesheet" href="trabalhoGarcia/css/style.css" type="text/css">
-            <link rel="stylesheet" href="trabalhoGarcia/css/style2.css" type="text/css">
+            <!--<link rel="stylesheet" href="trabalhoGarcia/css/style2.css" type="text/css">-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
             <script src="trabalhoGarcia/js/uikit.min.js"></script>
             <script src="trabalhoGarcia/js/uikit-icons.min.js"></script>
@@ -38,15 +38,15 @@
         </head>
         <body>
             <div class="uk-text-center" uk-grid>
-                <?php 
+                <?php
                     if (!isset($_SESSION)) session_start();
-                    if (!isset($_SESSION['Logado'])) {
-                        echo "<button uk-icon='icon: user;ratio: 3.5' onclick='sair()' style='background-color:transparent;border:none;'></button>";
-                    } else {
-                        echo "<button uk-icon='icon: sign-out;ratio: 3.5' onclick='/cadastro' style='background-color:transparent;border:none;'></button>";
+                    if (!isset($_SESSION['Logado'])){
+                        echo "<a href='https://php-a6eful.c9users.io/login'><button uk-icon='icon: user;ratio: 3.5' style='background-color:transparent;border:none;'></button></a>";
+                    }else{ 
+                        echo "<button uk-icon='icon: sign-out;ratio: 3.5' onclick='sair()' style='background-color:transparent;border:none;'></button>";
                     }
                 ?>
-                
+                <a href='https://php-a6eful.c9users.io/config'><button uk-icon='icon: cog;ratio: 3.5' style='background-color:transparent;border:none;'></button></a>
                 <header class="uk-width-1@s uk-width-1@m uk-width-1@l">
                     <picture>
                         <img src="trabalhoGarcia/img/logo.png" alt=""></img>
