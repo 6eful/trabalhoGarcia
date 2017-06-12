@@ -81,6 +81,16 @@ function logar(){
     xhr.send(JSON.stringify(data));
     //window.location.replace("https://php-a6eful.c9users.io/feed");
 }
+function sair(){
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET","https://php-a6eful.c9users.io/usuario/logout");
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200){
+            
+        }
+    }
+    xhr.send();
+}
 function viewAll(roxo,x){
     var verde = roxo["resp"];
     var i = 1;
