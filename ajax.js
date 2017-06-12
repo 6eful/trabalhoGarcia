@@ -17,7 +17,7 @@ function cadastrarUsuario() {
 
 function meusProdutos(id){
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://php-a6eful.c9users.io/produto/meus/2");
+    xhr.open("GET", "https://php-a6eful.c9users.io/produto/meus/"+id);
     xhr.responseType = "application/json";
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {

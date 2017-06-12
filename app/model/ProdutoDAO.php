@@ -33,7 +33,7 @@ class ProdutoDAO{
     }
     
     public function remover($id){
-        $st = $this->conn->prepare("DELETE FROM Produto WHERE cd_Produto = ?");
+        $st = $this->conn->prepare("DELETE FROM Produto WHERE cd_Produto = ?") or die("2".$conn->error);
         $st->bind_param("i",$id) or die("3".$st->error);
         $st->execute() or die("4".$st->error);
     }

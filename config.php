@@ -44,6 +44,12 @@
             </script>
         </head>
         <body>
+        	<?php
+                if (!isset($_SESSION)) session_start();
+                if (!isset($_SESSION['Logado'])) {
+                    header("Location:/feed"); exit;
+                }
+            ?>
         	<header uk-grid>
         		<!-- header com logo da pagina e voltar para a pagina de produtos-->
         		<picture class="uk-width-1@s uk-width-1@m uk-width-1@l">
@@ -71,7 +77,7 @@
 	        					<label for="removeConta">Digite seu Email para deletar sua Conta: </label>
                         		<input class="emailUsuario" id="removeConta" type="email" name="removeConta">
                         	</form>
-							<button onclick="apagarConta()">Deletar Conta</button>
+							<button onclick="apagarConta()" style="margin-top:10px;">Deletar Conta</button>
 						</article>
 						<article id="tab-2" class="tab-content">
 							<button id="meus" onclick="meusProdutos(<?php 
