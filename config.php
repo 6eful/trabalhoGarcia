@@ -44,7 +44,9 @@
 				})
             </script>
         </head>
-        <body>
+        <body onload="load(<?php 
+							if (!isset($_SESSION)) session_start();
+                		echo $_SESSION['UsuarioID'];?>)">
         	<?php
                 if (!isset($_SESSION)) session_start();
                 if (!isset($_SESSION['Logado'])) {
@@ -74,6 +76,19 @@
         		<section class="uk-width-2-4@l uk-width-1-2@m uk-width-1@s">
         			<div class="container">
 	        			<article id="tab-1" class="tab-content current">
+	        				<form name="contaEditar">
+								
+								<label for="emailUsuarioEditar">Email: </label>
+                        		<input class="emailUsuarioEditar" id="emailUsuarioEditar" type="email" name="emailUsuarioEditar" value="">
+                        		
+                        		<label for="telefoneUsuarioEditar">Telefone: </label>
+                        		<input class="telefoneUsuarioEditar" id="telefoneUsuarioEditar" type="tel" name="telefoneUsuarioEditar" value="">
+							</form>
+							<button onclick="salvar(<?php 
+							if (!isset($_SESSION)) session_start();
+                		echo $_SESSION['UsuarioID'];?>)">Salvar alterações</button>
+	        				</form>
+	        				<p>OU</p>
 	        				<form name="conta">
 	        					<label for="removeConta">Digite seu Email para deletar sua Conta: </label>
                         		<input class="emailUsuario" id="removeConta" type="email" name="removeConta">

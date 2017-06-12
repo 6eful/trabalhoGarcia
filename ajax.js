@@ -255,6 +255,43 @@ function mostrarMaterialEscolar(){
     }
     xhr.send();
 }
+function load(id){
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://php-a6eful.c9users.io/usuario/buscar/"+id);
+    xhr.responseType = "application/json";
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
+            var resposta = xhr.responseText;
+            var obj = JSON.parse(resposta);
+            mudar(obj);
+        }
+    }
+    xhr.send();
+}
+function mudar(obj){
+    var verde = obj["resp"];
+    verde.forEach(function(vermelho){
+        document.forms.contaEditar.emailUsuarioEditar.value = vermelho['email'];
+        document.forms.contaEditar.telefoneUsuarioEditar.value = vermelho['telefone'];
+    });
+}
+function salvar(id){
+    var vemail = document.forms.contaEditar.emailUsuarioEditar.value;alert(vemail);
+    var vtelefone = document.forms.contaEditar.telefoneUsuarioEditar.value;
+    var data = {email:vemail,telefone:vtelefone};
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT","https://php-a6eful.c9users.io/usuario/manipular/"+id);
+    xhr.responseType = "application/json";
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE &&  xhr.status == 200) {
+
+        } else {
+
+        }
+    }
+    xhr.send(JSON.stringify(data));
+    
+}
 function removerProduto(){
     const xhr = new XMLHttpRequest();
     var varId = document.forms.deletar.deletar.value;
