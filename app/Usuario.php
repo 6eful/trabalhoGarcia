@@ -16,6 +16,16 @@ class UsuarioResourcePOST implements UsuarioResource{
         $ndao->inserir($obj);
     }
     
+    public function autenticar(){
+        header("Access-Control-Allow-Origin: *");
+        $accept = $_SERVER["CONTENT_TYPE"];
+        echo $accept;
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $ndao = new UsuarioDAO();
+        echo $ndao->autenticarUsuario($obj);
+    }
+    
     public function todos(){
         //Todos eh GET e nao POST
         echo "Error";
@@ -59,6 +69,20 @@ class UsuarioResourceGET implements UsuarioResource{
         echo $ndao->getNome($obj);
     }
     
+    // public function autenticar(){
+    //     header("Access-Control-Allow-Origin: *");
+    //     $accept = $_SERVER["CONTENT_TYPE"];
+    //     echo $accept;
+    //     $json = file_get_contents('php://input');
+    //     $obj = json_decode($json);
+    //     var_dump($obj);
+    //     $ndao = new UsuarioDAO();
+    //     echo $ndao->autenticarUsuario($obj);
+    // }
+    public function logout(){
+        $ndao = new UsuarioDAO();
+        echo $ndao->sair();
+    }
     public function todos(){
         header("Access-Control-Allow-Origin: *");
         $ndao = new UsuarioDAO();
