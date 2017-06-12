@@ -37,6 +37,29 @@ class UsuarioResourcePOST implements UsuarioResource{
         http_response_code(404);
     }
 }
+class UsuarioResourcePUT implements UsuarioResource{
+    
+   public function manipular($id=0){
+        header("Access-Control-Allow-Origin: *");
+        $accept = $_SERVER["CONTENT_TYPE"];
+        echo $accept;
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+        $ndao = new UsuarioDAO();
+        $ndao->atualizar($id,$obj);
+    }
+    
+    public function todos(){
+        //Todos eh GET e nao POST
+        echo "Error";
+        http_response_code(405);
+    }
+    
+    public function __call($m, $arg){
+        echo "$m nao achado para PUT";
+        http_response_code(404);
+    }
+}
 
 class UsuarioResourceDELETE implements UsuarioResource{
     
@@ -69,16 +92,10 @@ class UsuarioResourceGET implements UsuarioResource{
         echo $ndao->getNome($obj);
     }
     
-    // public function autenticar(){
-    //     header("Access-Control-Allow-Origin: *");
-    //     $accept = $_SERVER["CONTENT_TYPE"];
-    //     echo $accept;
-    //     $json = file_get_contents('php://input');
-    //     $obj = json_decode($json);
-    //     var_dump($obj);
-    //     $ndao = new UsuarioDAO();
-    //     echo $ndao->autenticarUsuario($obj);
-    // }
+    public function buscar($id=0){
+        $ndao = new UsuarioDAO();
+        echo $ndao->consultar($id);
+    }
     public function logout(){
         $ndao = new UsuarioDAO();
         echo $ndao->sair();

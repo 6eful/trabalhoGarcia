@@ -16,6 +16,27 @@ class UsuarioDAO{
         $stmt->bind_param("ssss",$obj->nome,$obj->email,$hash,$obj->telefone) or die("3".$stmt->error);
         $stmt->execute() or die("4".$stmt->error);
     }
+    public function atualizar($id,$obj){
+        $stmt = $this->conn->prepare("UPDATE Usuario set ds_Email = ?, cd_Telefone =? WHERE Cd_Usuario = ?") or die("2".$conn->error);
+        $stmt->bind_param("ssi",$obj->email,$obj->telefone,$id) or die("3".$stmt->error);
+        $stmt->execute() or die("4".$stmt->error);
+    }
+    public function consultar($id){
+        $st = $this->conn->prepare("SELECT ds_Email, cd_Telefone FROM Usuario WHERE Cd_Usuario = ?") or die("1".$conn->error);
+        $st->bind_param("i",$id) or die("2".$conn->error);
+        $st->execute() or die("2".$st->error);
+        $st->bind_result($col0,$col1);
+        $arrMaior = array();
+        $arrMeio = array();
+        $novo;
+        while($st->fetch()){
+            $arrMeio[] = array(
+                            "email"      =>  $col0,
+                            "telefone"       =>  $col1);
+        }
+        $arrMaior["resp"] = $arrMeio;
+        echo json_encode($arrMaior);
+    }
     public function autenticarUsuario($obj){
         $senha = $obj->senha;
         $custo = '11';
